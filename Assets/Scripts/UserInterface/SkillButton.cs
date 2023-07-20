@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking.PlayerConnection;
 using UnityEngine.UI;
+using UnscriptedLogic;
 
 [ExecuteInEditMode]
 public class SkillButton : MonoBehaviour
@@ -58,7 +59,7 @@ public class SkillButton : MonoBehaviour
         }
 
         currencyManager = CurrencyManager.instance;
-        currencyManager.OnCurrencyModified += OnCurrencyModified;
+        currencyManager.CurrencyHandler.OnModified += OnCurrencyModified;
 
         button.onClick.AddListener(() =>
         {
@@ -67,19 +68,19 @@ public class SkillButton : MonoBehaviour
             if (!enableByDefault)
                 if (!connectedSkill.GetComponent<SkillButton>().isBought) return;
             
-            if (!currencyManager.HasCash(pointCost)) return;
+            if (!currencyManager.CurrencyHandler.HasAmount(pointCost)) return;
 
             border.color = obtainedcolor.Evaluate(0f);
             lineRenderer.colorGradient = obtainedcolor;
             isBought = true;
 
-            currencyManager.ModifyCash(UnscriptedLogic.MathUtils.MathLogic.ModificationType.Subtract, pointCost);
+            currencyManager.CurrencyHandler.Modify(ModifyType.Subtract, pointCost);
 
             button.interactable = false;
         });
     }
 
-    private void OnCurrencyModified(int arg1, int arg2)
+    private void OnCurrencyModified(object sender, IntHandlerEventArgs eventArgs)
     {
         if (isBought) return;
 
@@ -87,7 +88,7 @@ public class SkillButton : MonoBehaviour
         lineRenderer.colorGradient = unobtainedcolor;
         button.interactable = false;
 
-        if (!currencyManager.HasCash(pointCost))
+        if (!currencyManager.CurrencyHandler.HasAmount(pointCost))
         {
             return;
         }
@@ -98,7 +99,7 @@ public class SkillButton : MonoBehaviour
                 return;
         }
 
-        button.interactable = currencyManager.HasCash(pointCost);
+        button.interactable = currencyManager.CurrencyHandler.HasAmount(pointCost);
 
         border.color = obtainablecolor.Evaluate(0f);
         lineRenderer.colorGradient = obtainablecolor;

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnscriptedLogic.MathUtils;
+using UnscriptedLogic;
 
 public interface IDamageable
 {
@@ -9,5 +9,5 @@ public interface IDamageable
     float MaxHealth { get; }
     int Team { get; }
 
-    void ModifyHealth(MathLogic.ModificationType modificationType, float amount, int team);
+    void ModifyHealth(ModifyType modificationType, float amount, int team);
 }

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnscriptedLogic.MathUtils;
+using UnscriptedLogic;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public class Projectile : MonoBehaviour
@@ -48,13 +48,13 @@ public class Projectile : MonoBehaviour
 
             if (GlobalStatManager.instance.criticalShots)
             {
-                if (MathLogic.MathHelper.RandomFromIntZeroTo(10) == 5)
+                if (RandomLogic.IntZeroTo(10) == 5)
                 {
                     unitdamage *= 2f;
                 }
             }
 
-            damageable.ModifyHealth(MathLogic.ModificationType.Subtract, unitdamage, team);
+            damageable.ModifyHealth(ModifyType.Subtract, unitdamage, team);
             Destroy(gameObject);
         }
     }

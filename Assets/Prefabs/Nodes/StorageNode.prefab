@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  health: 25
+  health: 100
   nodeSO: {fileID: 11400000, guid: c27aced5e028cf14d840088b329fca72, type: 2}
   lineRenderer: {fileID: 78892603522394898}
   healthbar: {fileID: 1433299011042299287}

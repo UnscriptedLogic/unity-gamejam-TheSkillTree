@@ -3,52 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnscriptedLogic.MathUtils.MathLogic;
+using UnscriptedLogic;
 
 public class CurrencyManager : MonoBehaviour
 {
-    [SerializeField] private int cash;
-    [SerializeField] private TextMeshProUGUI cashTMP;
-    public Action<int, int> OnCurrencyModified;
+    [SerializeField] private int startAmount;
+    [SerializeField] private TextMeshProUGUI currencyTMP;
+    private IntHandler currencyHandler;
 
-    public static CurrencyManager instance;
+    public IntHandler CurrencyHandler => currencyHandler;
+
+    public static CurrencyManager instance { get; private set; }
 
     private void Awake()
     {
+        currencyHandler = new IntHandler(startAmount);
+        currencyHandler.OnModified += CurrencyHandler_OnModified;
         instance = this;
     }
 
-    private void Start()
+    private void CurrencyHandler_OnModified(object sender, IntHandlerEventArgs e)
     {
-        cashTMP.text = $"Points: {cash}";
-    }
-
-    public bool HasCash(float amount) => cash >= amount;
-
-    public void ModifyCash(ModificationType modificationType, int amount)
-    {
-        switch (modificationType)
-        {
-            case ModificationType.Add:
-                cash += amount;
-                break;
-            case ModificationType.Subtract:
-                cash -= amount;
-                break;
-            case ModificationType.Set:
-                cash = amount;
-                break;
-            case ModificationType.Divide:
-                cash /= amount;
-                break;
-            case ModificationType.Multiply:
-                cash *= amount;
-                break;
-            default:
-                break;
-        }
-
-        OnCurrencyModified?.Invoke(amount, cash);
-        cashTMP.text = $"Points: {cash}";
+        currencyTMP.text = $"Points: {e.currentValue.ToString()}";
     }
 }

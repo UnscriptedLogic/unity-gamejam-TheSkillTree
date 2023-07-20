@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
-using UnscriptedLogic.MathUtils;
+using UnscriptedLogic;
 
 public class RootNode : Node, ICanBuildOff, IResourceObtainer
 {
@@ -36,7 +36,7 @@ public class RootNode : Node, ICanBuildOff, IResourceObtainer
     {
         if (_interval <= 0f)
         {
-            CurrencyManager.instance.ModifyCash(MathLogic.ModificationType.Add, resourceMined + GlobalStatManager.instance.MinerAmount);
+            CurrencyManager.instance.CurrencyHandler.Modify(ModifyType.Add, resourceMined + GlobalStatManager.instance.MinerAmount);
             currentMax = interval + GlobalStatManager.instance.MinerSpeedReduction;
             _interval = currentMax;
         }
@@ -52,7 +52,7 @@ public class RootNode : Node, ICanBuildOff, IResourceObtainer
 
     }
 
-    public override void ModifyHealth(MathLogic.ModificationType modificationType, float amount, int team)
+    public override void ModifyHealth(ModifyType modificationType, float amount, int team)
     {
         base.ModifyHealth(modificationType, amount, team);
 

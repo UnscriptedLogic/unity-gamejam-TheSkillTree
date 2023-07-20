@@ -293,8 +293,8 @@ MonoBehaviour:
   unitLayer:
     serializedVersion: 2
     m_Bits: 64
-  resourceMined: 2
-  mineInterval: 10
+  resourceMined: 3
+  mineInterval: 5
   fillImage: {fileID: 1855826811060573647}
 --- !u!61 &2912468542826717141
 BoxCollider2D:

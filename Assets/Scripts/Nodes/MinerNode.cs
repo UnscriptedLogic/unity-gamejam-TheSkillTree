@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnscriptedLogic.MathUtils;
+using UnscriptedLogic;
 
 public class MinerNode : TurretNode, IResourceObtainer
 {
@@ -26,7 +26,7 @@ public class MinerNode : TurretNode, IResourceObtainer
     {
         if (_mineInterval <= 0f)
         {
-            CurrencyManager.instance.ModifyCash(MathLogic.ModificationType.Add, resourceMined + GlobalStatManager.instance.MinerAmount);
+            CurrencyManager.instance.CurrencyHandler.Modify(ModifyType.Add, resourceMined + GlobalStatManager.instance.MinerAmount);
             currentMax = mineInterval + GlobalStatManager.instance.MinerSpeedReduction;
             _mineInterval = currentMax;
         }

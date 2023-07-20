@@ -15,13 +15,13 @@ MonoBehaviour:
   waves:
   - waveSegments:
     - enemyToSpawn: {fileID: 4304652095920050655, guid: b29e2d731001e2a448314fcf25d3170a, type: 3}
-      amount: 5
-      interval: 2
+      amount: 2
+      interval: 4
       segmentInterval: 0
     waveInterval: 20
   - waveSegments:
     - enemyToSpawn: {fileID: 4304652095920050655, guid: b29e2d731001e2a448314fcf25d3170a, type: 3}
-      amount: 15
+      amount: 6
       interval: 1
       segmentInterval: 0
     waveInterval: 15
@@ -50,66 +50,4 @@ MonoBehaviour:
       amount: 5
       interval: 1
       segmentInterval: 0
-    waveInterval: 30
-  - waveSegments:
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: b29e2d731001e2a448314fcf25d3170a, type: 3}
-      amount: 15
-      interval: 0.5
-      segmentInterval: 10
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: c9359e55611fc9b4f90ae17087211f14, type: 3}
-      amount: 5
-      interval: 2
-      segmentInterval: 0
-    waveInterval: 30
-  - waveSegments:
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: 82541a046238b2e40b2683513f8eca28, type: 3}
-      amount: 10
-      interval: 3
-      segmentInterval: 10
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: c9359e55611fc9b4f90ae17087211f14, type: 3}
-      amount: 5
-      interval: 2
-      segmentInterval: 10
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: b29e2d731001e2a448314fcf25d3170a, type: 3}
-      amount: 20
-      interval: 2
-      segmentInterval: 0
-    waveInterval: 30
-  - waveSegments:
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: b29e2d731001e2a448314fcf25d3170a, type: 3}
-      amount: 30
-      interval: 0.25
-      segmentInterval: 0
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: 82541a046238b2e40b2683513f8eca28, type: 3}
-      amount: 15
-      interval: 1
-      segmentInterval: 10
-    waveInterval: 30
-  - waveSegments:
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: 82541a046238b2e40b2683513f8eca28, type: 3}
-      amount: 15
-      interval: 1
-      segmentInterval: 10
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: c9359e55611fc9b4f90ae17087211f14, type: 3}
-      amount: 30
-      interval: 0.1
-      segmentInterval: 0
-    waveInterval: 30
-  - waveSegments:
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: 3ce5978eb837aa64da82fb8015304254, type: 3}
-      amount: 1
-      interval: 1
-      segmentInterval: 10
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: 82541a046238b2e40b2683513f8eca28, type: 3}
-      amount: 30
-      interval: 1
-      segmentInterval: 10
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: c9359e55611fc9b4f90ae17087211f14, type: 3}
-      amount: 30
-      interval: 0.1
-      segmentInterval: 0
-    - enemyToSpawn: {fileID: 4304652095920050655, guid: 82541a046238b2e40b2683513f8eca28, type: 3}
-      amount: 30
-      interval: 1
-      segmentInterval: 10
     waveInterval: 30

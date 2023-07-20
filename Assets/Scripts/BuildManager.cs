@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnscriptedLogic;
 
 public class BuildManager : MonoBehaviour
 {
@@ -76,7 +77,7 @@ public class BuildManager : MonoBehaviour
             nodeObject.GetComponent<Node>().SetLink(previouslySelectedNode);
             Destroy(nodePreviewPlacement);
 
-            CurrencyManager.instance.ModifyCash(UnscriptedLogic.MathUtils.MathLogic.ModificationType.Subtract, currentNodeSO.Cost);
+            CurrencyManager.instance.CurrencyHandler.Modify(ModifyType.Subtract, currentNodeSO.Cost);
 
             canBuildOffable.Connections++;
             nodeToPlacePrefab = null;
@@ -160,7 +161,7 @@ public class BuildManager : MonoBehaviour
             if (buildOffable.Connections >= buildOffable.MaxConnections + GlobalStatManager.instance.StorageUnit)
                 continue;
 
-            if (!CurrencyManager.instance.HasCash(nodeSO.Cost))
+            if (!CurrencyManager.instance.CurrencyHandler.HasAmount(nodeSO.Cost))
                 continue;
 
             optionButtons[i].interactable = true;

@@ -331,10 +331,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  health: 150
+  health: 300
   nodeSO: {fileID: 11400000, guid: 045b50c5a84c56b49923ed0f495ced68, type: 2}
   lineRenderer: {fileID: 7196158044120024119}
   healthbar: {fileID: 8670397852742514964}
+  changer: {fileID: 0}
   buildables:
   - {fileID: 11400000, guid: c27aced5e028cf14d840088b329fca72, type: 2}
   connections: 0

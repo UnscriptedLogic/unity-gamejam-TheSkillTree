@@ -1,7 +1,7 @@
 using External.CustomSlider;
 using System;
 using UnityEngine;
-using UnscriptedLogic.MathUtils;
+using UnscriptedLogic;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class Node : MonoBehaviour, IInspectable, IDamageable
@@ -40,25 +40,25 @@ public class Node : MonoBehaviour, IInspectable, IDamageable
         }
     }
 
-    public virtual void ModifyHealth(MathLogic.ModificationType modificationType, float amount, int team)
+    public virtual void ModifyHealth(ModifyType modificationType, float amount, int team)
     {
         if (team == this.team) return;
 
         switch (modificationType)
         {
-            case MathLogic.ModificationType.Add:
+            case ModifyType.Add:
                 currentHealth += amount;
                 break;
-            case MathLogic.ModificationType.Subtract:
+            case ModifyType.Subtract:
                 currentHealth -= amount;
                 break;
-            case MathLogic.ModificationType.Set:
+            case ModifyType.Set:
                 currentHealth = amount;
                 break;
-            case MathLogic.ModificationType.Divide:
+            case ModifyType.Divide:
                 currentHealth /= amount;
                 break;
-            case MathLogic.ModificationType.Multiply:
+            case ModifyType.Multiply:
                 currentHealth *= amount;
                 break;
             default:

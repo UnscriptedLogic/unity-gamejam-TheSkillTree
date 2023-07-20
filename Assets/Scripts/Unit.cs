@@ -2,7 +2,7 @@ using External.CustomSlider;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnscriptedLogic.MathUtils;
+using UnscriptedLogic;
 
 public class Unit : MonoBehaviour, IDamageable
 {
@@ -11,7 +11,6 @@ public class Unit : MonoBehaviour, IDamageable
     [SerializeField] private float health = 10f;
     [SerializeField] private int team = 1;
     [SerializeField] private WorldSpaceCustomSlider healthbar;
-    [SerializeField] private Rigidbody2D rb;
 
     private float currentHealth;
     private Transform target;
@@ -35,25 +34,25 @@ public class Unit : MonoBehaviour, IDamageable
         initialized = true;
     }
 
-    public void ModifyHealth(MathLogic.ModificationType modificationType, float amount, int team)
+    public void ModifyHealth(ModifyType modificationType, float amount, int team)
     {
         if (team == this.team) return;
 
         switch (modificationType)
         {
-            case MathLogic.ModificationType.Add:
+            case ModifyType.Add:
                 currentHealth += amount;
                 break;
-            case MathLogic.ModificationType.Subtract:
+            case ModifyType.Subtract:
                 currentHealth -= amount;
                 break;
-            case MathLogic.ModificationType.Set:
+            case ModifyType.Set:
                 currentHealth = amount;
                 break;
-            case MathLogic.ModificationType.Divide:
+            case ModifyType.Divide:
                 currentHealth /= amount;
                 break;
-            case MathLogic.ModificationType.Multiply:
+            case ModifyType.Multiply:
                 currentHealth *= amount;
                 break;
             default:
@@ -74,8 +73,8 @@ public class Unit : MonoBehaviour, IDamageable
         IDamageable damageable = collision.collider.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.ModifyHealth(MathLogic.ModificationType.Subtract, currentHealth, team);
-            ModifyHealth(MathLogic.ModificationType.Subtract, damageable.CurrentHealth, -1);
+            damageable.ModifyHealth(ModifyType.Subtract, currentHealth, team);
+            ModifyHealth(ModifyType.Subtract, damageable.CurrentHealth, -1);
         }
     }
 
@@ -84,6 +83,6 @@ public class Unit : MonoBehaviour, IDamageable
         if (!initialized) return;
         if (target == null) return;
 
-        rb.MovePosition((Vector2)transform.position + (Vector2)(target.position - transform.position).normalized * movementSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.deltaTime);
     }
 }

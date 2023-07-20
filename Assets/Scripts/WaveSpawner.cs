@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using Unity.VisualScripting;
-using UnscriptedLogic.MathUtils;
+using UnscriptedLogic;
 
 namespace Game.Spawning
 {
@@ -237,7 +237,7 @@ namespace Game.Spawning
 
         private void SpawnEnemy(GameObject enemyToSpawn)
         {
-            Vector3 position = MathLogic.MathHelper.RandomFromArray(spawnLocations).position;
+            Vector3 position = RandomLogic.FromArray(spawnLocations).position;
             GameObject unitObject = Instantiate(enemyToSpawn, position, Quaternion.identity);
             Unit unit = unitObject.GetComponent<Unit>();
             unit.Initialize(target);

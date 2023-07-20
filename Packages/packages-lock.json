@@ -279,6 +279,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unscriptedlogic.unscriptedlogiclib": {
+      "version": "https://github.com/UnscriptedLogic/unity-library-UnscriptedLogic.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "10c607a3383371072e25b805b10641a09e0ca775"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
